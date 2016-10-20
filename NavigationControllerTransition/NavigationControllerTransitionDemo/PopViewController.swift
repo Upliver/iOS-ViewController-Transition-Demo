@@ -17,7 +17,7 @@ class PopViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.title = "StackTop"
         // Do any additional setup after loading the view.
-        edgePanGesture.edges = .Left
+        edgePanGesture.edges = .left
         edgePanGesture.addTarget(self, action: #selector(PopViewController.handleEdgePanGesture(_:)))
         view.addGestureRecognizer(edgePanGesture)
     }
@@ -27,32 +27,41 @@ class PopViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
         
-    func handleEdgePanGesture(gesture: UIScreenEdgePanGestureRecognizer){
-        let translationX =  gesture.translationInView(view).x
+    func handleEdgePanGesture(_ gesture: UIScreenEdgePanGestureRecognizer){
+        let translationX =  gesture.translation(in: view).x
         let translationBase: CGFloat = view.frame.width / 3
         let translationAbs = translationX > 0 ? translationX : -translationX
         let percent = translationAbs > translationBase ? 1.0 : translationAbs / translationBase
         switch gesture.state{
-        case .Began:
+        case .began:
             navigationDelegate = self.navigationController?.delegate as? SDENavigationDelegate
-            navigationDelegate?.interactive = true
-            self.navigationController?.popViewControllerAnimated(true)
-        case .Changed:
-            navigationDelegate?.interactionController.updateInteractiveTransition(percent)
-        case .Cancelled, .Ended:
+            
+            if let navDelegate = navigationDelegate {
+                navDelegate.interactive = true
+            }
+            
+            if let vc = self.navigationController {
+                vc.popViewController(animated: true)
+            }            
+            
+        case .changed:
+            navigationDelegate?.interactionController.update(percent)
+        case .cancelled, .ended:
             if percent > 0.5{
-                navigationDelegate?.interactionController.finishInteractiveTransition()
+                navigationDelegate?.interactionController.finish()
             }else{
-                navigationDelegate?.interactionController.cancelInteractiveTransition()
+                navigationDelegate?.interactionController.cancel()
             }
             navigationDelegate?.interactive = false
         default: break
         }
     }
     
-    @IBAction func popMe(sender: AnyObject) {
+    @IBAction func popMe(_ sender: AnyObject) {
         print(self.navigationController!.view)
-        self.navigationController?.popViewControllerAnimated(true)
+        if let vc = self.navigationController {
+            vc.popViewController(animated: true)
+        }
     }
 
     deinit{

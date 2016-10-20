@@ -13,12 +13,12 @@ class SDENavigationDelegate: NSObject, UINavigationControllerDelegate {
     var interactive = false
     let interactionController = UIPercentDrivenInteractiveTransition()
     
-    func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        let transitionType = SDETransitionType.NavigationTransition(operation)
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let transitionType = SDETransitionType.navigationTransition(operation)
         return SlideAnimationController(type: transitionType)
     }
     
-    func navigationController(navigationController: UINavigationController, interactionControllerForAnimationController animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+    func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         return interactive ? self.interactionController : nil
     }
 }
