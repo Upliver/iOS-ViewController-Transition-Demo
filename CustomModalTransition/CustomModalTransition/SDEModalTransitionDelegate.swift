@@ -10,14 +10,14 @@ import UIKit
 
 class SDEModalTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate {
 
-    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return OverlayAnimationController()
         //Or
 //        let transitionType = SDETransitionType.ModalTransition(.Presentation)
 //        return SlideAnimationController(type: transitionType)
     }
     
-    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return OverlayAnimationController()
         //Or
 //        let transitionType = SDETransitionType.ModalTransition(.Dismissal)
@@ -25,7 +25,7 @@ class SDEModalTransitionDelegate: NSObject, UIViewControllerTransitioningDelegat
     }
     
     @available(iOS 8.0, *)
-    func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
-        return OverlayPresentationController(presentedViewController: presented, presentingViewController: presenting)
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        return OverlayPresentationController(presentedViewController: presented, presenting: presenting)
     }
 }

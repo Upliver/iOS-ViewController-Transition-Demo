@@ -111,6 +111,8 @@
 				TargetAttributes = {
 					FD368ACD1C1F26C9001D204F = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = MBTTHTUMW2;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -269,11 +271,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = MBTTHTUMW2;
 				INFOPLIST_FILE = "$(SRCROOT)/CustomModalTransition/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = seedante.CustomModalTransition;
 				PRODUCT_NAME = CustomModalTransitionDemo;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -281,11 +285,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = MBTTHTUMW2;
 				INFOPLIST_FILE = "$(SRCROOT)/CustomModalTransition/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = seedante.CustomModalTransition;
 				PRODUCT_NAME = CustomModalTransitionDemo;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
